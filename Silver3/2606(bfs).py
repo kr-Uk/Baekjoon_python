@@ -12,10 +12,8 @@ BFS나 DFS
     7 : []
 }
 
-q []
-curr 1
-2, 5
-visited 1, 2, 5, 3, 6
+단방향그래프로 해서 계속 틀렸다.
+무방향 !!
 
 """
 
@@ -28,7 +26,7 @@ def bfs(start, graph):
     
     while q:
         curr = q.popleft()
-        print(curr, end=" ")
+        # print(curr, end=" ")
         
         for neighbor in graph[curr]:
             if neighbor not in visited:
@@ -46,5 +44,6 @@ graph = {i: [] for i in range(1, v+1)}
 for _ in range(e):
     i, value = map(int, input().split())
     graph[i].append(value)
+    graph[value].append(i) # 이 부분 추가하기 !
     
 print(len(bfs(1, graph))-1)
