@@ -26,7 +26,7 @@ def dfs(start, graph):
     
     while q:
         curr = q.pop()
-        print(curr, end=" ")
+        # print(curr, end=" ")
         
         if curr not in visited:
             visited.add(curr)
