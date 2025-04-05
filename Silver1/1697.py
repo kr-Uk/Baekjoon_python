@@ -30,18 +30,15 @@ import sys
 input = sys.stdin.readline
 
 n, k = map(int, input().split())
-dp = [0] * (k+1)
+dp = [0] * 100001
 
-for i in range(n):
+for i in range(n+1):
     dp[i] = n-i # n에서 i까지 가는 건 -1씩 계속
 
-if k <= n:
-    print(dp[k-1])
-else:
-    for i in range(n+1, k+1):
-        if i % 2 == 0:
-            dp[i] = min(dp[i-1]+1, dp[i//2]+1)
-        else:
-            dp[i] = min(dp[i-1]+1, dp[(i+1)//2]+2)
+for i in range(n+1, k+1):
+    if i % 2 == 0:
+        dp[i] = min(dp[i-1]+1, dp[i//2]+1)
+    else:
+         dp[i] = min(dp[i-1]+1, dp[(i+1)//2]+2)
 
 print(dp[k])
