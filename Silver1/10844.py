@@ -24,21 +24,13 @@
 989, 987
 
 dp를 2차원으로 만들어서 마지막에 오는 자릿수에 따른 변화 ㄱㄱ
+dp[n][0-9]
 """
 
 import sys
 input = sys.stdin.readline
 
 n = int(input())
-dp = [0] * (n+1)
-
-if n > 0:
-    dp[0] = 9
-
-if n > 1:
-    dp[1] = 17
-
-for i in range(2, n):
-    dp[i] = (dp[i-1] * 2) - 2
+dp = [[0 for _ in range(10)] for _ in range(n)]
 
 print(dp[n-1] % 1000000000)
