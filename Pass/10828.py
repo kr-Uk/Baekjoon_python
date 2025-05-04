@@ -2,6 +2,8 @@
 스택... 
 """
 
+import sys
+input = sys.stdin.readline
 n = int(input())
 stack = []
 
@@ -22,4 +24,7 @@ for i in range(n):
         else:
             print(1)
     elif tmp[0] == 'top':
-        print(stack[-1])
+        if stack:
+            print(stack[-1])
+        else:
+            print(-1)
