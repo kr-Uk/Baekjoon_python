@@ -1,4 +1,5 @@
 # 2667
+# 왜 틀려 ㅜㅜ
 
 from collections import deque
 import sys
