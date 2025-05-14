@@ -1,5 +1,4 @@
 # 2667
-# 왜 틀려 ㅜㅜ
 
 from collections import deque
 import sys
@@ -14,29 +13,30 @@ for _ in range(n):
   graph.append(list(map(int, input().strip())))
 
 def bfs(x, y):
+    global cnt
     q = deque([])
     q.append((y, x))
-    graph[y][x] = cnt
+    graph[y][x] = 0
+    cnt += 1
     while q:
-        x, y = q.popleft()
+        y, x = q.popleft()
         for i in range(4):
             nx = x + dx[i]
             ny = y + dy[i]
             if 0 <= nx < n and 0 <= ny < n and graph[ny][nx] == 1:
-                graph[ny][nx] = cnt
-                q.append((nx, ny))
+                graph[ny][nx] = 0
+                cnt += 1
+                q.append((ny, nx))
 
 result = []
 for i in range(n):
   for j in range(n):
     if graph[i][j] == 1:
-        cnt = 2
-        bfs(i, j)
-        cnt += 1
+        cnt = 0
+        bfs(j, i)
+        result.append(cnt)
 
-print(len(result))
 result.sort()
+print(len(result))
 for r in result:
     print(r)
-
-print(graph)
