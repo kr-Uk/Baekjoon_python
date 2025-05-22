@@ -7,7 +7,6 @@ def dfs(x, y, cnt, power, n):
     global result
     if cnt == 7:
         result.add(n)
-        print(n)
         return
     
     for i in range(4):
