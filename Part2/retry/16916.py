@@ -1,3 +1,4 @@
+"""
 import sys
 input = sys.stdin.readline
 
@@ -31,3 +32,41 @@ while idx <= len(s) - len(p):
         idx += 1
         
 print(0)
+"""
+
+import sys
+input = sys.stdin.readline
+
+s = input().rstrip()
+p = input().rstrip()
+
+def make_table(p):
+    table = [0] * len(p)
+    
+    j = 0
+    for i in range(1, len(table)):
+        while j > 0 and p[i] != p[j]:
+            j = table[j-1]
+        
+        if p[i] == p[j]:
+            j += 1
+            table[i] = j
+    
+    return table
+
+def kmp(s, p, table):
+    i, j = 0, 0
+    
+    for i in range(len(s)):
+        while j > 0 and s[i] != p[j]:
+            j = table[j-1]
+            
+        if s[i] == p[j]:
+            j += 1
+            if j == len(p):
+                return True
+    
+    return False
+
+table = make_table(p)
+print([0, 1][kmp(s, p, table)])
