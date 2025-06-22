@@ -43,11 +43,29 @@ dp = [0] * (k+1)
 
 for i in range(n):
     coins[i] = int(input())
-    dp[coins[i]] = 1
+    
+dp[0] = 1
 
-for i in range(k):
-    for j in range(n):
-        if i-coins[j] >= 0:
-            dp[i] += dp[i-coins[j]]
+for coin in coins:
+    for i in range(coin, k+1):
+        dp[i] += dp[i-coin]
 
-print(dp)
+print(dp[k])
+
+"""
+dp[0] = 0
+dp[1] = 1
+dp[2] = 11, 2
+dp[3] = 111, 12
+dp[4] = 1111, 121, 22
+dp[5] = 11111, 1211, 221, 5 dp[1]
+dp[n] = dp[n-coins[0]] + dp[n-coins[1]] + .. 
+- dp[coins[1] - coins[0]]
+코인 하나 추가할 때의 경우의 수 12 21 이거를 어캐 구분할래
+
+1 2 5
+
+1을 만드는건 하나 1
+2를 만드는건 11 2
+3을 만드는건 2를 만드는거에서 1씩 덧붙힘. 1을 만드는거에서 2를 덧붙힘 겹ㅊ는거 제외
+"""
