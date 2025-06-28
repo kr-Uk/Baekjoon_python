@@ -34,6 +34,9 @@ def dfs(isWidth, isHeight, x, y):
 dfs(True, False, 1, 0)
 print(cnt)
 """
+"""
+DP로 풀어보기
+"""
 
 import sys
 input = sys.stdin.readline
